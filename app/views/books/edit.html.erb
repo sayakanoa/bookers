@@ -1,1 +1,24 @@
-<h1>編集ページ<h1>
+<body>
+
+<h1>EditingBook</h1>
+<%= form_with model:@book, local: true do |f| %>
+<div class="field">
+<label for="book_title">Title<label>
+<%= f.text_field :title %>
+</div>
+<div class="field">
+<label for="book_body">Body</label>
+<%= f.text_area :body %>
+</div>
+<div class="action">
+<%= f.submit 'Update Book' %>
+</div>
+<% end %>
+
+<%= link_to "Show", book_path(@book) %>
+|
+<%= link_to "Back", books_path(@book) %>
+
+
+
+</body>
