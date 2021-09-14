@@ -1,4 +1,7 @@
 <body>
+  <% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
   <p id="notice"></p>
   <p>
     <strong>Title:</strong>

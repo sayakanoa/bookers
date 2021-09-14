@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     book.save
-    redirect_to book_path(book)
+  　redirect_to books_path(book)
   end
 
   def index
@@ -22,9 +22,12 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+    redirect_to book_path(@book), notice: "成功"
+    else
+    render action: :edit
+    end
   end
 
   def destroy
@@ -38,4 +41,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-end
+
+  end
